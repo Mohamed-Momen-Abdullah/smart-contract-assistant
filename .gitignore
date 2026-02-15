@@ -1,0 +1,19 @@
+# Ignore the virtual environment
+venv/
+.venv/
+env/
+
+# Ignore python cache files (these are annoying in repos)
+__pycache__/
+*.py[cod]
+
+# Ignore Environment Variables (CRITICAL SECURITY)
+.env
+
+# Ignore IDE settings (optional but recommended)
+.vscode/
+.idea/
+
+# Ignore the vector store data if you don't want to upload the database itself
+# (Uncomment the line below if your vector store gets large)
+# chroma_db/
