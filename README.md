@@ -67,7 +67,7 @@ A RAG-powered web application that allows users to upload legal documents (PDF o
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/smart-contract-assistant.git
+git clone https://github.com/Mohamed-Momen-Abdullah/smart-contract-assistant.git 
 cd smart-contract-assistant
 ```
 
@@ -101,7 +101,9 @@ pip install -r requirements.txt
 Create a `.env` file in the project root:
 
 ```bash
-cp .env.example .env
+nano .env
+# or
+vim .env
 ```
 
 Edit `.env` and add your Groq API key:
@@ -164,7 +166,7 @@ You are running Python directly instead of through the venv. Run `source venv/bi
 Your LangChain version is too new (v1.x). Recreate the venv with Python 3.11 and install pinned versions from `requirements.txt`.
 
 **`model has been decommissioned`**
-The Groq model name in your config is outdated. Update it to `llama-3.3-70b-versatile`.
+The Groq model name in your config is outdated. For me, Update it to `llama-3.3-70b-versatile`, and it works fine.
 
 **App loads but answers are wrong**
 Ensure the document was fully processed before switching to the chat tab. Try re-uploading the file.
