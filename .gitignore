@@ -3,14 +3,14 @@ venv/
 .venv/
 env/
 
-# Ignore python cache files (these are annoying in repos)
+# Ignore python cache files
 __pycache__/
 *.py[cod]
 
-# Ignore Environment Variables (CRITICAL SECURITY)
+# Ignore Environment Variables
 .env
 
-# Ignore IDE settings (optional but recommended)
+# Ignore IDE settings
 .vscode/
 .idea/
 
