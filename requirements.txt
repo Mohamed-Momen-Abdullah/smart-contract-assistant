@@ -1,0 +1,11 @@
+langchain==0.3.27
+langchain-core==0.3.83
+langchain-community==0.3.31
+langchain-groq==0.2.5
+langchain-huggingface==0.1.2
+faiss-cpu
+sentence-transformers
+python-docx
+pypdf
+gradio
+python-dotenv
