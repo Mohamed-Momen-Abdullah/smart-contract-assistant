@@ -18,6 +18,7 @@ def process_upload(files):
     Handles file upload from the Gradio UI.
         1. Saves the uploaded file(s) to the data/ directory.
         2. Runs the ingestion pipeline (load -> chunk -> embed -> store).
+        3. Replaces any previously loaded document entirely.
 
     NOTE: In Gradio 4+, gr.File returns file paths as strings (not objects).
     """
@@ -47,8 +48,8 @@ def chat_function(message, history):
     Main chat handler for the Gradio ChatInterface.
     Runs the RAG chain and returns the answer with source citations.
 
-    'history' is maintained automatically by gr.ChatInterface but is
-    not forwarded to the LLM (stateless RAG per project scope).
+    The RAG chain is recreated on every call so it always uses
+    the latest uploaded document's vector store.
     """
     if not message.strip():
         return "Please enter a question."
@@ -95,7 +96,7 @@ with gr.Blocks(theme=gr.themes.Soft(), title="Smart Contract Assistant") as app:
         gr.Markdown("### Step 1: Upload your document")
         gr.Markdown(
             "Supported formats: **PDF**, **DOCX**. "
-            "Uploading a new document will add it to the existing knowledge base."
+            "Uploading a new document will **replace** the previous one."
         )
 
         upload_component = gr.File(
