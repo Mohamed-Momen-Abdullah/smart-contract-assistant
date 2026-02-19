@@ -47,13 +47,8 @@ def ingest_file(file_path):
     """
     print(f"Starting ingestion for: {file_path}")
 
-    # Step 1: Load
     raw_docs = load_document(file_path)
-
-    # Step 2: Chunk
     chunks = chunk_documents(raw_docs)
-
-    # Step 3: Embed & Store
     save_to_vectorstore(chunks)
 
     print("Ingestion complete. Embeddings stored successfully.")

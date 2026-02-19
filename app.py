@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-load_dotenv()  # Must be called before any os.getenv() access
+load_dotenv()
 
 import os
 import shutil
@@ -7,12 +7,6 @@ import gradio as gr
 from src.ingestion import ingest_file
 from src.rag_pipeline import create_rag_chain
 from src.utils import format_sources
-
-
-# ---------------------------------------------------------
-# Helper Functions
-# ---------------------------------------------------------
-
 def process_upload(files):
     """
     Handles file upload from the Gradio UI.

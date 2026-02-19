@@ -6,7 +6,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_groq import ChatGroq
 from src.vector_store import load_vectorstore
 
-# Llama 3 70B via Groq - fast and capable
+# Llama 3 70B via Groq 
 LLM_MODEL = "llama-3.3-70b-versatile"
 
 
@@ -22,7 +22,7 @@ def get_llm():
 
     llm = ChatGroq(
         model=LLM_MODEL,
-        temperature=0,      # Deterministic for contract analysis
+        temperature=0,     
         api_key=api_key,
     )
     return llm
@@ -49,7 +49,6 @@ def create_rag_chain():
     llm = get_llm()
     retriever = get_retriever()
 
-    # ---- Guardrailed system prompt ----------------------------------------
     system_prompt = (
         "You are a professional AI assistant specialising in contract and legal "
         "document analysis. Your job is to help users understand the contents of "

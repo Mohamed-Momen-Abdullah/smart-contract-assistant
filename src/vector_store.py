@@ -3,7 +3,7 @@ import shutil
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-# Define where the database will be saved locally
+
 VECTOR_STORE_PATH = "faiss_index"
 
 def get_embedding_model():
@@ -53,6 +53,6 @@ def load_vectorstore():
     vectorstore = FAISS.load_local(
         VECTOR_STORE_PATH,
         embeddings,
-        allow_dangerous_deserialization=True  # Required for local FAISS files
+        allow_dangerous_deserialization=True  # for local FAISS files
     )
     return vectorstore
