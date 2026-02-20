@@ -11,9 +11,7 @@ LLM_MODEL = "llama-3.3-70b-versatile"
 
 
 def get_llm():
-    """
-    Initialises the Groq LLM. Reads the API key from the environment.
-    """
+
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         raise EnvironmentError(
@@ -29,23 +27,13 @@ def get_llm():
 
 
 def get_retriever():
-    """
-    Loads the FAISS vector store and returns a retriever that fetches
-    the top-3 most relevant chunks for a given query.
-    """
+    
     vectorstore = load_vectorstore()
     return vectorstore.as_retriever(search_kwargs={"k": 3})
 
 
 def create_rag_chain():
-    """
-    Builds the full RAG chain:
-        Retriever -> StuffDocuments -> LLM
-    Includes a system prompt with guardrails to:
-        - Ground answers in the retrieved context only
-        - Refuse to answer if the answer is not in the document
-        - Add a legal disclaimer
-    """
+    
     llm = get_llm()
     retriever = get_retriever()
 

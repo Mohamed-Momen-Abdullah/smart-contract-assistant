@@ -5,10 +5,6 @@ from src.vector_store import save_to_vectorstore
 
 
 def load_document(file_path):
-    """
-    Loads a document based on its extension (PDF or DOCX).
-    Returns a list of LangChain Document objects.
-    """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
 
@@ -23,10 +19,6 @@ def load_document(file_path):
 
 
 def chunk_documents(documents, chunk_size=1000, chunk_overlap=200):
-    """
-    Splits long documents into smaller overlapping chunks for the RAG pipeline.
-    Configurable chunk size handles large documents of varying length.
-    """
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
@@ -39,12 +31,6 @@ def chunk_documents(documents, chunk_size=1000, chunk_overlap=200):
 
 
 def ingest_file(file_path):
-    """
-    Orchestrates the full ingestion pipeline:
-        1. Load  -> parse the PDF/DOCX into raw text
-        2. Chunk -> split into overlapping segments
-        3. Embed & Store -> generate embeddings and save to FAISS
-    """
     print(f"Starting ingestion for: {file_path}")
 
     raw_docs = load_document(file_path)
